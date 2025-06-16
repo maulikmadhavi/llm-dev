@@ -2,3 +2,4 @@ nvidia_api.py
 ASR/data/
 ASR/whisper-base-en/
 ASR/whisper-base-en-finetuned/
+paper_qa/db/
