@@ -1,0 +1,143 @@
+{
+  "name": "Wikipedia-ollama",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b24b05a7-d802-4413-bfb1-23e1e76f6203",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        -40
+      ],
+      "webhookId": "a889d2ae-2159-402f-b326-5f61e90f602e"
+    },
+    {
+      "parameters": {
+        "content": "## Start by saying 'hi'\n![Button](https://i.imgur.com/PrIBJI6.png)",
+        "height": 149,
+        "width": 150
+      },
+      "id": "5592c045-6718-4c4e-9961-ce67a251b6df",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        180,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Today is {{ $now }}. IF you do not have the updated answer, please use Wikipedia tool to help you get the updated information. \n\nYou are a helpful assistant"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        580,
+        -40
+      ],
+      "id": "7db7aa31-4648-494d-b570-7b594f105c1c",
+      "name": "AI Agent",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "model": "qwen3:0.6b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        520,
+        180
+      ],
+      "id": "71755563-9824-4258-8bfa-fa61d4b3f589",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "v5eAcR55gN9B5ybV",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        660,
+        200
+      ],
+      "id": "1891ff77-758a-40d3-a621-1e86d37ce503",
+      "name": "Wikipedia"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "cfccd670-00e7-4e9c-949f-af1cf74040ad",
+  "meta": {
+    "templateId": "self-building-ai-agent",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "615755a5be60a5d4f66e9332997215d5274f2a6dd4f945ff0257d7afd23fb2a6"
+  },
+  "id": "Qoa2YMQnacnpLVkt",
+  "tags": [
+    {
+      "name": "wikipedia",
+      "id": "RpwfCixrfwnskaES",
+      "createdAt": "2025-06-14T01:28:39.908Z",
+      "updatedAt": "2025-06-14T01:28:39.908Z"
+    },
+    {
+      "name": "ollama",
+      "id": "YzdarlvU2CULBOFw",
+      "createdAt": "2025-06-14T01:28:36.616Z",
+      "updatedAt": "2025-06-14T01:28:36.616Z"
+    }
+  ]
+}
