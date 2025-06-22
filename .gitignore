@@ -3,3 +3,4 @@ ASR/data/
 ASR/whisper-base-en/
 ASR/whisper-base-en-finetuned/
 paper_qa/db/
+langchain/vector_stores/
