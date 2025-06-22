@@ -54,6 +54,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/23/06/4203ffa2beb5bedb07f0da0f79b7d9039d1c33f522e0d1a2d5b6218e6f2e/aiohttp-3.11.18-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/ec/6a/bc7e17a3e87a2985d3e8f4da4cd0f481060eb78fb08596c42be62c90a4d9/aiosignal-1.3.2-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/de/b9/6ffb48e82c5e97b03cecee872d134a6b6666c2767b2d32ed709f3a60a8fe/anthropic-0.54.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a1/ee/48ca1a7c89ffec8b6a0c5d02b89c305671d5ffd8d3c94acf8b8c408575bb/anyio-4.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/39/e3/893e8757be2612e6c266d9bb58ad2e3651524b5b40cf56761e985a28b13e/asgiref-3.8.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/25/8a/c46dcc25341b5bce5472c718902eb3d38600a903b14fa6aeecef3f21a46f/asttokens-3.0.0-py3-none-any.whl
@@ -70,6 +71,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/8c/73/6ede2ec59bce19b3edf4209d70004253ec5f4e319f9a2e3f2f15601ed5f7/charset_normalizer-3.4.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/55/95/c1b39757caf08c5e4c423b025e4d5c2206fc8e6659aa830625106a108911/chromadb-1.0.12-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/85/32/10bb5764d90a8eee674e9dc6f4db6a0ab47c8c4d0d83c27f7c39ac415a4d/click-8.2.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e6/75/49e5bfe642f71f272236b5b2d2691cf915a7283cc0ceda56357b61daa538/comm-0.2.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/49/51/456271757974a5235b4b222b664b3d06c689713b0ccc718f789b81792b5a/coredis-4.22.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -121,6 +123,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/76/c6/c88e154df9c4e1a2a66ccf0005a88dfb2650c1dffb6f5ce603dfbd452ce3/idna-3.10-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/20/b0/36bd937216ec521246249be3bf9855081de4c5e06a0c9b4219dbeda50373/importlib_metadata-8.7.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a4/ed/1f1afb2e9e7f38a545d628f864d562a5ae64fe6f7a10e28ffb9b185b4e89/importlib_resources-6.5.2-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/59/91/aa6bde563e0085a02a435aa99b49ef75b0a4b062635e606dab23ce18d720/inflection-0.5.1-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3c/99/9ed3d52d00f1846679e3aa12e2326ac7044b5e7f90dc822b60115fa533ca/ipython-9.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d9/33/1f075bf72b0b747cb3288d011319aaf64083cf2efef8354174e3ed4540e2/ipython_pygments_lexers-1.1.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/58/6a/9166369a2f092bd286d24e6307de555d63616e8ddb373ebad2b5635ca4cd/ipywidgets-8.1.7-py3-none-any.whl
@@ -140,6 +143,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/5c/e1/975bcd11e86de74c10023d291879810d4eaffcfbb5d4c0d8fb6fb41b8247/langchain_community-0.3.25-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/54/f0/31db18b7b8213266aed926ce89b5bdd84ccde7ee2edf4cab14e3dd2bfcf1/langchain_core-0.3.65-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b2/27/fe8caa4884611286b1f7d6c5cfd76e1fef188faaa946db4fde6daa1cd2cd/langchain_experimental-0.3.4-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/c1/da/7446c2eeacd420cb975ceb49c6feca7be40cf8ed3686a128ca78410c148f/langchain_huggingface-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6c/eb/c133e34e870ef29e82a7c412bfe31ec1e7e1bdd44f8d3679d5ed008c827b/langchain_nvidia_ai_endpoints-0.3.10-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/84/6f/ab7a470522e27b95ed008eb9ef81b1ab55321f3f3aff21ca0109aae53cdf/langchain_ollama-0.3.3-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/8b/a3/3696ff2444658053c01b6b7443e761f28bb71217d82bb89137a978c5f66f/langchain_text_splitters-0.3.8-py3-none-any.whl
@@ -163,6 +167,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/8f/8e/9ad090d3553c280a8060fbf6e24dc1c0c29704ee7d1c372f0c174aa59285/matplotlib_inline-0.1.7-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b4/55/0927c33528710085ee77b808d85bbbafdb91a1db7c8eaa89cac16d6c513e/mmh3-5.1.0-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pypi: https://files.pythonhosted.org/packages/9a/67/7e8406a29b6c45be7af7740456f7f37025f0506ae2e05fb9009a53946860/monotonic-1.6-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/f1/54/65af8de681fa8255402c80eda2a501ba467921d5a7a028c9c22a2c2eedb5/msgpack-1.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/4c/02/751530c19e78fe73b24c3da66618eda0aa0d7f6e7aa512e46483de6be210/multidict-6.4.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -195,11 +200,44 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/bd/42/094c93ffda2834631a121cdc89af80c7a9f2ee6249a4498d7f5151beb57e/opentelemetry_exporter_otlp_proto_grpc-1.34.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/69/c5/468c245231feff02ac41573a1d73b1bbd5ff0412365f441de785a4fa178c/opentelemetry_exporter_otlp_proto_http-1.34.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/c3/4e/712ef979207582cdecf27b64f2ae1051f1cddbc60b59815b6a9a25c23afa/opentelemetry_instrumentation-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/5e/5c/077897b73a52c3275fb6951d1b10d5a752442e1d96783b1a784602a5123f/opentelemetry_instrumentation_alephalpha-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/76/0a/7e41d7553f5e916bbe225ca1d45ad79c35ee4057a0617bb2ecbc064141d3/opentelemetry_instrumentation_anthropic-0.40.12-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/62/85/b97b6e475ded567cf890619b18e30160d190b28cf52c801e57e939112241/opentelemetry_instrumentation_asgi-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/9f/9e/cf84ea2d22dfa65243040310a470b1c79e0ab33fed2c274b966ce4a147c9/opentelemetry_instrumentation_bedrock-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0c/2a/f484549ce6ae1106fba89f40a13d572720130d9a052347a8334f3cd23cd9/opentelemetry_instrumentation_chromadb-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/96/97/af1cd97f20ded2314cfae34414fa21ffbaf6464f0eaac669a7c2bf25acc2/opentelemetry_instrumentation_cohere-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/57/0f/6e4a83eb5ece15813b877ca538c0942699fd94eab70db90d7300b07bde7f/opentelemetry_instrumentation_crewai-0.40.12-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a9/49/9068c222193b0aac126bd3ebe3e9e19c143b67b468a097ce484c0077bfcf/opentelemetry_instrumentation_fastapi-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/04/71/8e923792f2f160340dc3b95a597eb47042b6588be52d90f53606812a36f2/opentelemetry_instrumentation_google_generativeai-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/65/15/89114be104cafe49a315f61cb66161fdf1b8e2982483133a000b05dc279b/opentelemetry_instrumentation_groq-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/ac/c4/ce9c80ea1e6ffaaff2fc7bf2e76162bac7993c066deed96e926c5e0eec61/opentelemetry_instrumentation_haystack-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/17/a9/7d3932b123737b8d8c0a01ee8967032ac3e8d34f6d083724ab94d8431407/opentelemetry_instrumentation_lancedb-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/e5/03/888155ceea2a1a3ac98688a829fd5e8e464c0d3de26caca2f35af6874b55/opentelemetry_instrumentation_langchain-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/b3/1f/db9e8737cf18b862e6921c4cf9759ba30cf73e7d290b9f68fca55eed6809/opentelemetry_instrumentation_llamaindex-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/e7/5d/463edb0024d69f0a1bada2a04a1e5b2313f7497518e8d3f54c4ebb9c9776/opentelemetry_instrumentation_logging-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/8f/43/cbf2c06545496628925c419888c029d93a0415c15ededbfb3b7d22123709/opentelemetry_instrumentation_marqo-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/11/bf/dee3ed848f5a745ae0dfeafea4996ed579d2f28ed0e16cf232461e5337e0/opentelemetry_instrumentation_mcp-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/5e/38/3a26df5a5f2e6c8e01442914e26659aec6e9f5365306aa13294639bf458b/opentelemetry_instrumentation_milvus-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/9c/cc/dee5a70974f728cf199d35763a004653c5e8f16a2deb1d999f4a8c74c822/opentelemetry_instrumentation_mistralai-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/f4/e9/d31f7b58554b605e4a0961e9c6a9304d637b0ddad65dc3bdbe9601d10b6c/opentelemetry_instrumentation_ollama-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/5f/df/22b42bd65cfe7fd4f82e7716f9a1d9fd27f39372bca399aa3824bfcabbd8/opentelemetry_instrumentation_openai-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/a4/fc/dc5f791359e9e32029125319a55719240013d7e5dfc7fff42d461fa4d1ad/opentelemetry_instrumentation_pinecone-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/60/f3/89e47282ab4113fa7151c4ef961f72a0404de03eb3e8bd241239ee9c1c7b/opentelemetry_instrumentation_qdrant-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/9d/8f/43223ecc8a4725fe80c2da28b8136c94647eb5647432f3bc9066ea66f2b7/opentelemetry_instrumentation_replicate-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/22/ee/a6c0f61543412ba5a15c38f113eab07a0c09ebc5c4c9965507e2c24cf994/opentelemetry_instrumentation_requests-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/f6/d0/91804f63570562131df8afdd6dc8ace4e8d316b3ee82367ba633275c5e8d/opentelemetry_instrumentation_sagemaker-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/63/be/85b2b93d912b604dee6ff3c13db3228930058f888924c4eed738a7be686c/opentelemetry_instrumentation_sqlalchemy-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/df/c4/5ad22ec927d8af54516e3488f59ad0bee2129250a84cc3b6a5c1978f3139/opentelemetry_instrumentation_threading-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/61/68/818948a935bc59d9a75d5c68db6bd430e27525d035719898f77c12b65d1f/opentelemetry_instrumentation_together-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0d/a7/dbddecc62bfec602bbe574470c6182f5b677b40462f566c91a4c757ba6d4/opentelemetry_instrumentation_transformers-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/59/ca/6c576bc7cc7c00404f2db553bdf1fe6626b6333fa6c0328287c16429b3d1/opentelemetry_instrumentation_urllib3-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/71/10/48ac8df74e2d24add5c9095fa1ddd44cb5b5e5691546fa02bcb2dfecbcb6/opentelemetry_instrumentation_vertexai-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/46/1f/d07771b0828de6c16d85fc5183334a37d0b68f904e94093547aef5398608/opentelemetry_instrumentation_watsonx-0.40.12-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/a0/c3/d690329956e36c550812b725ad886e87dd6875c948ebef104b978b7f685c/opentelemetry_instrumentation_weaviate-0.40.12-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/db/58/708881f5ad3c72954caa61ac970d3c01209dbebf5e534fb840dfb777bad2/opentelemetry_proto-1.34.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/55/96/5b788eef90a65543a67988729f0e44fc46eac1da455505ae5091f418a9d9/opentelemetry_sdk-1.34.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ca/b1/d7a2472f7da7e39f1a85f63951ad653c1126a632d6491c056ec6284a10a7/opentelemetry_semantic_conventions-0.55b0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/34/98/f5196ba0f4105a4790cec8c6671cf676c96dfa29bfedfe3c4f112bf4e6ad/opentelemetry_semantic_conventions_ai-0.4.9-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/cb/d1/9520bb0e79036de744774da3dd0b96a16f8683193162e56db1776d4581b7/opentelemetry_util_http-0.55b0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/27/6f/875e8e282105350b9a5341c0222a13419758545ae32ad6e0fcf5f64d76aa/orjson-3.10.18-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/0a/38/184a570d7c44c0260bc576d1daaac35b2bfd465a50a08189518505748b9a/ormsgpack-1.10.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -212,7 +250,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/fe/7c/d8b1330458e4d2f3f45d9508796d7caf0c0d3764c00c823d10f6f1a3b76d/pillow-11.2.1-cp312-cp312-manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/fe/39/979e8e21520d4e47a0bbe349e2713c0aac6f3d853d0e5b34d76206c439aa/platformdirs-4.3.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a8/87/77cc11c7a9ea9fd05503def69e3d18605852cd0d4b0d3b8f15bbeb3ef1d1/pooch-1.8.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b2/7e/8fa2fca3af421b2258be8b036c7f6975c71d312dbe92f7023a4287613700/posthog-4.4.2-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/54/e2/c158366e621562ef224f132e75c1d1c1fce6b078a19f7d8060451a12d4b9/posthog-3.25.0-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/c3/7b/cbd5d999a07ff2a21465975d4eb477ae6f69765e8fe8c9087dab250180d8/primp-0.15.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/ce/4f/5249960887b1fbe561d9ff265496d170b55a735b76724f10ef19f9e40716/prompt_toolkit-3.0.51-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3b/4c/f72c9e1022b3b043ec7dc475a0f405d4c3e10b9b1d378a7330fecf0652da/propcache-0.3.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -281,6 +319,7 @@ environments:
       - pypi: https://download.pytorch.org/whl/cu128/torchaudio-2.7.0%2Bcu128-cp312-cp312-manylinux_2_28_x86_64.whl#sha256=1bf478e24e94aa49b682e6b6ab481998cb542d06f77daa9aafc92cedd6a21127
       - pypi: https://download.pytorch.org/whl/cu128/torchvision-0.22.0%2Bcu128-cp312-cp312-manylinux_2_28_x86_64.whl#sha256=06c101f40e1ff94869be14487c91fd5352e376f202fdeafb8f53c58cee2fbeb5
       - pypi: https://files.pythonhosted.org/packages/d0/30/dc54f88dd4a2b5dc8a0279bdd7270e735851848b762aeb1c1184ed1f6b14/tqdm-4.67.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/02/63/373efa29621f3ebd920ba5fbd0f1b83911fd7fa8caee6e518e33d1a30014/traceloop_sdk-0.40.12-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/00/c0/8f5d070730d7836adc9c9b6408dec68c6ced86b304a9b26a14df072a6e8c/traitlets-5.14.3-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/96/f2/25b27b396af03d5b64e61976b14f7209e2939e9e806c10749b6d277c273e/transformers-4.52.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/11/53/ce18470914ab6cfbec9384ee565d23c4d1c55f0548160b1c7b33000b11fd/triton-3.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
@@ -450,6 +489,22 @@ packages:
   sha256: 1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53
   requires_dist:
   - typing-extensions>=4.0.0 ; python_full_version < '3.9'
+  requires_python: '>=3.8'
+- pypi: https://files.pythonhosted.org/packages/de/b9/6ffb48e82c5e97b03cecee872d134a6b6666c2767b2d32ed709f3a60a8fe/anthropic-0.54.0-py3-none-any.whl
+  name: anthropic
+  version: 0.54.0
+  sha256: c1062a0a905daeec17ca9c06c401e4b3f24cb0495841d29d752568a1d4018d56
+  requires_dist:
+  - anyio>=3.5.0,<5
+  - distro>=1.7.0,<2
+  - httpx>=0.25.0,<1
+  - jiter>=0.4.0,<1
+  - pydantic>=1.9.0,<3
+  - sniffio
+  - typing-extensions>=4.10,<5
+  - boto3>=1.28.57 ; extra == 'bedrock'
+  - botocore>=1.31.57 ; extra == 'bedrock'
+  - google-auth[requests]>=2,<3 ; extra == 'vertex'
   requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/a1/ee/48ca1a7c89ffec8b6a0c5d02b89c305671d5ffd8d3c94acf8b8c408575bb/anyio-4.9.0-py3-none-any.whl
   name: anyio
@@ -712,6 +767,11 @@ packages:
   requires_dist:
   - colorama ; sys_platform == 'win32'
   requires_python: '>=3.10'
+- pypi: https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl
+  name: colorama
+  version: 0.4.6
+  sha256: 4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6
+  requires_python: '>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*'
 - pypi: https://files.pythonhosted.org/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl
   name: coloredlogs
   version: 15.0.1
@@ -1825,6 +1885,11 @@ packages:
   - pytest-enabler>=2.2 ; extra == 'enabler'
   - pytest-mypy ; extra == 'type'
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/59/91/aa6bde563e0085a02a435aa99b49ef75b0a4b062635e606dab23ce18d720/inflection-0.5.1-py2.py3-none-any.whl
+  name: inflection
+  version: 0.5.1
+  sha256: f38b2b640938a4f35ade69ac3d053042959b62a0f1076a5bbaa1b9526605a8a2
+  requires_python: '>=3.5'
 - pypi: https://files.pythonhosted.org/packages/3c/99/9ed3d52d00f1846679e3aa12e2326ac7044b5e7f90dc822b60115fa533ca/ipython-9.3.0-py3-none-any.whl
   name: ipython
   version: 9.3.0
@@ -2124,6 +2189,17 @@ packages:
   - langchain-community>=0.3.0,<0.4.0
   - langchain-core>=0.3.28,<0.4.0
   requires_python: '>=3.9,<4.0'
+- pypi: https://files.pythonhosted.org/packages/c1/da/7446c2eeacd420cb975ceb49c6feca7be40cf8ed3686a128ca78410c148f/langchain_huggingface-0.3.0-py3-none-any.whl
+  name: langchain-huggingface
+  version: 0.3.0
+  sha256: aab85d57e649c805d2f2a9f8d72d87b5d12c45dd4831309ac9c37753ddb237ed
+  requires_dist:
+  - langchain-core>=0.3.65,<1.0.0
+  - tokenizers>=0.19.1
+  - huggingface-hub>=0.30.2
+  - transformers>=4.39.0 ; extra == 'full'
+  - sentence-transformers>=2.6.0 ; extra == 'full'
+  requires_python: '>=3.9'
 - pypi: https://files.pythonhosted.org/packages/6c/eb/c133e34e870ef29e82a7c412bfe31ec1e7e1bdd44f8d3679d5ed008c827b/langchain_nvidia_ai_endpoints-0.3.10-py3-none-any.whl
   name: langchain-nvidia-ai-endpoints
   version: 0.3.10
@@ -2664,6 +2740,10 @@ packages:
   - matplotlib==3.10.0 ; extra == 'plot'
   - pandas==2.2.3 ; extra == 'plot'
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/9a/67/7e8406a29b6c45be7af7740456f7f37025f0506ae2e05fb9009a53946860/monotonic-1.6-py2.py3-none-any.whl
+  name: monotonic
+  version: '1.6'
+  sha256: 68687e19a14f11f26d140dd5c86f3dba4bf5df58003000ed467e0e2a69bca96c
 - pypi: https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl
   name: mpmath
   version: 1.3.0
@@ -2963,6 +3043,26 @@ packages:
   - packaging>=18.0
   - wrapt>=1.0.0,<2.0.0
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/5e/5c/077897b73a52c3275fb6951d1b10d5a752442e1d96783b1a784602a5123f/opentelemetry_instrumentation_alephalpha-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-alephalpha
+  version: 0.40.12
+  sha256: d4e5a39545fa9fd6571f99aaad2d0d69589572983c361268775177fac7472f49
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/76/0a/7e41d7553f5e916bbe225ca1d45ad79c35ee4057a0617bb2ecbc064141d3/opentelemetry_instrumentation_anthropic-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-anthropic
+  version: 0.40.12
+  sha256: 19a6658dccb3f62397bad9e1c73d491ebf0c53029728940e056e1fdb3f41fe26
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
 - pypi: https://files.pythonhosted.org/packages/62/85/b97b6e475ded567cf890619b18e30160d190b28cf52c801e57e939112241/opentelemetry_instrumentation_asgi-0.55b0-py3-none-any.whl
   name: opentelemetry-instrumentation-asgi
   version: 0.55b0
@@ -2975,6 +3075,48 @@ packages:
   - opentelemetry-util-http==0.55b0
   - asgiref~=3.0 ; extra == 'instruments'
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/9f/9e/cf84ea2d22dfa65243040310a470b1c79e0ab33fed2c274b966ce4a147c9/opentelemetry_instrumentation_bedrock-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-bedrock
+  version: 0.40.12
+  sha256: 0ea194f52f29a3213a41098cee3e34b52a61fd888ccdf018333cc2fc1d370e92
+  requires_dist:
+  - anthropic>=0.17.0
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  - tokenizers>=0.13.0
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/0c/2a/f484549ce6ae1106fba89f40a13d572720130d9a052347a8334f3cd23cd9/opentelemetry_instrumentation_chromadb-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-chromadb
+  version: 0.40.12
+  sha256: 768de329000b5d7e473f83c4aee6d29f34466071c42251a57a87ea509be14e60
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/96/97/af1cd97f20ded2314cfae34414fa21ffbaf6464f0eaac669a7c2bf25acc2/opentelemetry_instrumentation_cohere-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-cohere
+  version: 0.40.12
+  sha256: e93b892fab97116de05ec10cd0423a9b302253404a58ed1ece9f6a8feb50f32c
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/57/0f/6e4a83eb5ece15813b877ca538c0942699fd94eab70db90d7300b07bde7f/opentelemetry_instrumentation_crewai-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-crewai
+  version: 0.40.12
+  sha256: 0b12026c87c28137fb77ddc25c165ceb5f0b6f7e2278d359f7e3f3cc6e2e6d55
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.10,<4'
 - pypi: https://files.pythonhosted.org/packages/a9/49/9068c222193b0aac126bd3ebe3e9e19c143b67b468a097ce484c0077bfcf/opentelemetry_instrumentation_fastapi-0.55b0-py3-none-any.whl
   name: opentelemetry-instrumentation-fastapi
   version: 0.55b0
@@ -2987,6 +3129,270 @@ packages:
   - opentelemetry-util-http==0.55b0
   - fastapi~=0.92 ; extra == 'instruments'
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/04/71/8e923792f2f160340dc3b95a597eb47042b6588be52d90f53606812a36f2/opentelemetry_instrumentation_google_generativeai-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-google-generativeai
+  version: 0.40.12
+  sha256: 371d1f133bc4e165955ba3e3069f6a684573ff8782a7b4f1e6e71509133712cc
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/65/15/89114be104cafe49a315f61cb66161fdf1b8e2982483133a000b05dc279b/opentelemetry_instrumentation_groq-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-groq
+  version: 0.40.12
+  sha256: a9dce20f52a3cc2da80c7d3bd219da0048467b0f336aa86d1bb05d586e9aa123
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/ac/c4/ce9c80ea1e6ffaaff2fc7bf2e76162bac7993c066deed96e926c5e0eec61/opentelemetry_instrumentation_haystack-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-haystack
+  version: 0.40.12
+  sha256: 1e44c6e63a2218debd6e9a29c6dd6c37cbd536bf9fbc3cb9d46f74d50143fdfb
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/17/a9/7d3932b123737b8d8c0a01ee8967032ac3e8d34f6d083724ab94d8431407/opentelemetry_instrumentation_lancedb-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-lancedb
+  version: 0.40.12
+  sha256: e2a0440572da373eeda97fe7a198c9e2caf10f166ef603b8707cd993ba7e1c1c
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/e5/03/888155ceea2a1a3ac98688a829fd5e8e464c0d3de26caca2f35af6874b55/opentelemetry_instrumentation_langchain-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-langchain
+  version: 0.40.12
+  sha256: 4503c88ffd3ffb710e549042ce8d2c82baeb9c771363d4364c443704c82cc323
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/b3/1f/db9e8737cf18b862e6921c4cf9759ba30cf73e7d290b9f68fca55eed6809/opentelemetry_instrumentation_llamaindex-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-llamaindex
+  version: 0.40.12
+  sha256: c4ffb9d8a031c91ed8d24da341250059a45ac3f38cbf6d39984107b4da83b278
+  requires_dist:
+  - inflection>=0.5.1,<0.6.0
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/e7/5d/463edb0024d69f0a1bada2a04a1e5b2313f7497518e8d3f54c4ebb9c9776/opentelemetry_instrumentation_logging-0.55b0-py3-none-any.whl
+  name: opentelemetry-instrumentation-logging
+  version: 0.55b0
+  sha256: 8d81b205acab8ace0c82e96dbd13bb03b4834c2e311ddfc14f01418c0d2dbfbb
+  requires_dist:
+  - opentelemetry-api~=1.12
+  - opentelemetry-instrumentation==0.55b0
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/8f/43/cbf2c06545496628925c419888c029d93a0415c15ededbfb3b7d22123709/opentelemetry_instrumentation_marqo-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-marqo
+  version: 0.40.12
+  sha256: 0741b6495f673300909e062fe126ce68ba933d8efc2c741fbf8dc7c1c7e3ab8b
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/11/bf/dee3ed848f5a745ae0dfeafea4996ed579d2f28ed0e16cf232461e5337e0/opentelemetry_instrumentation_mcp-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-mcp
+  version: 0.40.12
+  sha256: 8ab9458d8d0c84198b21c196d4304632af88711c3e457abef54cd345b655f4c8
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.10,<4'
+- pypi: https://files.pythonhosted.org/packages/5e/38/3a26df5a5f2e6c8e01442914e26659aec6e9f5365306aa13294639bf458b/opentelemetry_instrumentation_milvus-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-milvus
+  version: 0.40.12
+  sha256: e4035ff63e413c5e70113322fb13d2a9b694d7fb106bea9fdd851480a0bab679
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/9c/cc/dee5a70974f728cf199d35763a004653c5e8f16a2deb1d999f4a8c74c822/opentelemetry_instrumentation_mistralai-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-mistralai
+  version: 0.40.12
+  sha256: 4698a7dc044e427897dca67b883e2da1e907ecbd63faf3f2d916f7834424ce46
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/f4/e9/d31f7b58554b605e4a0961e9c6a9304d637b0ddad65dc3bdbe9601d10b6c/opentelemetry_instrumentation_ollama-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-ollama
+  version: 0.40.12
+  sha256: d289bc07b1032df1fe0714d82484a0b98e7e3685dd600c8b096ff9204dde5f88
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/5f/df/22b42bd65cfe7fd4f82e7716f9a1d9fd27f39372bca399aa3824bfcabbd8/opentelemetry_instrumentation_openai-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-openai
+  version: 0.40.12
+  sha256: f232fd9fbc2326e206183ce69af9af8dc6f868900c51de6b0bd188730f63d854
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  - tiktoken>=0.6.0,<1
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/a4/fc/dc5f791359e9e32029125319a55719240013d7e5dfc7fff42d461fa4d1ad/opentelemetry_instrumentation_pinecone-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-pinecone
+  version: 0.40.12
+  sha256: 706e01a62588af072053bf563d5fbe4af90fe8e981d8942c208e0738399feb95
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/60/f3/89e47282ab4113fa7151c4ef961f72a0404de03eb3e8bd241239ee9c1c7b/opentelemetry_instrumentation_qdrant-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-qdrant
+  version: 0.40.12
+  sha256: dc890f84d214be6bdbc6ca746bd4173ee5196aa9e3c368c551743db2aa829e45
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/9d/8f/43223ecc8a4725fe80c2da28b8136c94647eb5647432f3bc9066ea66f2b7/opentelemetry_instrumentation_replicate-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-replicate
+  version: 0.40.12
+  sha256: dee9b3f9ef5ad2ff6ef9809d4fe08c1daf5c24249af6a5d4647b7bc4ce216a2e
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/22/ee/a6c0f61543412ba5a15c38f113eab07a0c09ebc5c4c9965507e2c24cf994/opentelemetry_instrumentation_requests-0.55b0-py3-none-any.whl
+  name: opentelemetry-instrumentation-requests
+  version: 0.55b0
+  sha256: 9299303c5b23ea0c825f6bda346f585171471e19e6c1313c19a3facddf1e2a42
+  requires_dist:
+  - opentelemetry-api~=1.12
+  - opentelemetry-instrumentation==0.55b0
+  - opentelemetry-semantic-conventions==0.55b0
+  - opentelemetry-util-http==0.55b0
+  - requests~=2.0 ; extra == 'instruments'
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/f6/d0/91804f63570562131df8afdd6dc8ace4e8d316b3ee82367ba633275c5e8d/opentelemetry_instrumentation_sagemaker-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-sagemaker
+  version: 0.40.12
+  sha256: 1550cbfff2846f893967b0bd45205b0a060af954d25993d379d026e30dac32b1
+  requires_dist:
+  - opentelemetry-api>=1.26.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/63/be/85b2b93d912b604dee6ff3c13db3228930058f888924c4eed738a7be686c/opentelemetry_instrumentation_sqlalchemy-0.55b0-py3-none-any.whl
+  name: opentelemetry-instrumentation-sqlalchemy
+  version: 0.55b0
+  sha256: f2642235f3a11e283982c5def2ea4b0c615ebe2e643103bd6dd23a7e2ec0c4e4
+  requires_dist:
+  - opentelemetry-api~=1.12
+  - opentelemetry-instrumentation==0.55b0
+  - opentelemetry-semantic-conventions==0.55b0
+  - packaging>=21.0
+  - wrapt>=1.11.2
+  - sqlalchemy>=1.0.0,<2.1.0 ; extra == 'instruments'
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/df/c4/5ad22ec927d8af54516e3488f59ad0bee2129250a84cc3b6a5c1978f3139/opentelemetry_instrumentation_threading-0.55b0-py3-none-any.whl
+  name: opentelemetry-instrumentation-threading
+  version: 0.55b0
+  sha256: fe30b58bd6a9124a7ff3f09d2b2e39fefc153b5967d4f9276fd696574bde365f
+  requires_dist:
+  - opentelemetry-api~=1.12
+  - opentelemetry-instrumentation==0.55b0
+  - wrapt>=1.0.0,<2.0.0
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/61/68/818948a935bc59d9a75d5c68db6bd430e27525d035719898f77c12b65d1f/opentelemetry_instrumentation_together-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-together
+  version: 0.40.12
+  sha256: cf9a9910069b231dd8f5a8e585fb0b447716bd442ef1debb698efea29718f92a
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/0d/a7/dbddecc62bfec602bbe574470c6182f5b677b40462f566c91a4c757ba6d4/opentelemetry_instrumentation_transformers-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-transformers
+  version: 0.40.12
+  sha256: dbe60cf0db2d520ca71659da64603cc2fc5d33d8d4a6bf97626eb1c4723fdac0
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/59/ca/6c576bc7cc7c00404f2db553bdf1fe6626b6333fa6c0328287c16429b3d1/opentelemetry_instrumentation_urllib3-0.55b0-py3-none-any.whl
+  name: opentelemetry-instrumentation-urllib3
+  version: 0.55b0
+  sha256: 58f31daadcd2c0c88e55436cb8686e328adc9d52e96edb3dd210800ade845fb0
+  requires_dist:
+  - opentelemetry-api~=1.12
+  - opentelemetry-instrumentation==0.55b0
+  - opentelemetry-semantic-conventions==0.55b0
+  - opentelemetry-util-http==0.55b0
+  - wrapt>=1.0.0,<2.0.0
+  - urllib3>=1.0.0,<3.0.0 ; extra == 'instruments'
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/71/10/48ac8df74e2d24add5c9095fa1ddd44cb5b5e5691546fa02bcb2dfecbcb6/opentelemetry_instrumentation_vertexai-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-vertexai
+  version: 0.40.12
+  sha256: 77caa76cac3e3fc3ae888ba5b3bb3fe7e854e5024823177379b1a915b158c1d9
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/46/1f/d07771b0828de6c16d85fc5183334a37d0b68f904e94093547aef5398608/opentelemetry_instrumentation_watsonx-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-watsonx
+  version: 0.40.12
+  sha256: 4e19a164ad51234ec962a39ce48932e724ef5f85b3650ac6e8f113e98340267c
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
+- pypi: https://files.pythonhosted.org/packages/a0/c3/d690329956e36c550812b725ad886e87dd6875c948ebef104b978b7f685c/opentelemetry_instrumentation_weaviate-0.40.12-py3-none-any.whl
+  name: opentelemetry-instrumentation-weaviate
+  version: 0.40.12
+  sha256: 3ba5f439cbe73540c2df0bc183a4fd47c05d82f3570e420b888a7245bd8c42d7
+  requires_dist:
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation>=0.50b0
+  - opentelemetry-semantic-conventions>=0.50b0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  requires_python: '>=3.9,<4'
 - pypi: https://files.pythonhosted.org/packages/db/58/708881f5ad3c72954caa61ac970d3c01209dbebf5e534fb840dfb777bad2/opentelemetry_proto-1.34.0-py3-none-any.whl
   name: opentelemetry-proto
   version: 1.34.0
@@ -3011,6 +3417,11 @@ packages:
   - opentelemetry-api==1.34.0
   - typing-extensions>=4.5.0
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/34/98/f5196ba0f4105a4790cec8c6671cf676c96dfa29bfedfe3c4f112bf4e6ad/opentelemetry_semantic_conventions_ai-0.4.9-py3-none-any.whl
+  name: opentelemetry-semantic-conventions-ai
+  version: 0.4.9
+  sha256: 71149e46a72554ae17de46bca6c11ba540c19c89904bd4cc3111aac6edf10315
+  requires_python: '>=3.9,<4'
 - pypi: https://files.pythonhosted.org/packages/cb/d1/9520bb0e79036de744774da3dd0b96a16f8683193162e56db1776d4581b7/opentelemetry_util_http-0.55b0-py3-none-any.whl
   name: opentelemetry-util-http
   version: 0.55b0
@@ -3266,20 +3677,22 @@ packages:
   - paramiko>=2.7.0 ; extra == 'sftp'
   - xxhash>=1.4.3 ; extra == 'xxhash'
   requires_python: '>=3.7'
-- pypi: https://files.pythonhosted.org/packages/b2/7e/8fa2fca3af421b2258be8b036c7f6975c71d312dbe92f7023a4287613700/posthog-4.4.2-py3-none-any.whl
+- pypi: https://files.pythonhosted.org/packages/54/e2/c158366e621562ef224f132e75c1d1c1fce6b078a19f7d8060451a12d4b9/posthog-3.25.0-py2.py3-none-any.whl
   name: posthog
-  version: 4.4.2
-  sha256: c0236cdfd3b63e6d4146810c092fac48dbd65a71d35a17e4ddb311bcb2bd67cd
+  version: 3.25.0
+  sha256: 85db78c13d1ecb11aed06fad53759c4e8fb3633442c2f3d0336bc0ce8a585d30
   requires_dist:
   - requests>=2.7,<3.0
   - six>=1.5
-  - python-dateutil>=2.2
+  - monotonic>=1.5
   - backoff>=1.10.0
+  - python-dateutil>2.1
   - distro>=1.5.0
-  - sentry-sdk ; extra == 'sentry'
-  - django ; extra == 'sentry'
-  - langchain>=0.2.0 ; extra == 'langchain'
+  - black ; extra == 'dev'
   - django-stubs ; extra == 'dev'
+  - isort ; extra == 'dev'
+  - flake8 ; extra == 'dev'
+  - flake8-print ; extra == 'dev'
   - lxml ; extra == 'dev'
   - mypy ; extra == 'dev'
   - mypy-baseline ; extra == 'dev'
@@ -3290,15 +3703,10 @@ packages:
   - types-six ; extra == 'dev'
   - pre-commit ; extra == 'dev'
   - pydantic ; extra == 'dev'
-  - ruff ; extra == 'dev'
-  - setuptools ; extra == 'dev'
-  - packaging ; extra == 'dev'
-  - wheel ; extra == 'dev'
-  - twine ; extra == 'dev'
-  - tomli ; extra == 'dev'
-  - tomli-w ; extra == 'dev'
   - mock>=2.0.0 ; extra == 'test'
   - freezegun==1.5.1 ; extra == 'test'
+  - pylint ; extra == 'test'
+  - flake8 ; extra == 'test'
   - coverage ; extra == 'test'
   - pytest ; extra == 'test'
   - pytest-timeout ; extra == 'test'
@@ -3310,10 +3718,11 @@ packages:
   - langchain-community>=0.2.0 ; extra == 'test'
   - langchain-openai>=0.2.0 ; extra == 'test'
   - langchain-anthropic>=0.2.0 ; extra == 'test'
-  - google-genai ; extra == 'test'
   - pydantic ; extra == 'test'
   - parameterized>=0.8.1 ; extra == 'test'
-  requires_python: '>=3.9'
+  - sentry-sdk ; extra == 'sentry'
+  - django ; extra == 'sentry'
+  - langchain>=0.2.0 ; extra == 'langchain'
 - pypi: https://files.pythonhosted.org/packages/c3/7b/cbd5d999a07ff2a21465975d4eb477ae6f69765e8fe8c9087dab250180d8/primp-0.15.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
   name: primp
   version: 0.15.0
@@ -4167,6 +4576,56 @@ packages:
   - requests ; extra == 'telegram'
   - ipywidgets>=6 ; extra == 'notebook'
   requires_python: '>=3.7'
+- pypi: https://files.pythonhosted.org/packages/02/63/373efa29621f3ebd920ba5fbd0f1b83911fd7fa8caee6e518e33d1a30014/traceloop_sdk-0.40.12-py3-none-any.whl
+  name: traceloop-sdk
+  version: 0.40.12
+  sha256: f3411b3b57974d4678e3dd7ee26967124f5e68cccccf714a725c9d5412bf6b72
+  requires_dist:
+  - aiohttp>=3.11.11,<4.0.0
+  - colorama>=0.4.6,<0.5.0
+  - deprecated>=1.2.14,<2.0.0
+  - jinja2>=3.1.5,<4.0.0
+  - opentelemetry-api>=1.28.0,<2.0.0
+  - opentelemetry-exporter-otlp-proto-grpc>=1.28.0,<2.0.0
+  - opentelemetry-exporter-otlp-proto-http>=1.28.0,<2.0.0
+  - opentelemetry-instrumentation-alephalpha==0.40.12
+  - opentelemetry-instrumentation-anthropic==0.40.12
+  - opentelemetry-instrumentation-bedrock==0.40.12
+  - opentelemetry-instrumentation-chromadb==0.40.12
+  - opentelemetry-instrumentation-cohere==0.40.12
+  - opentelemetry-instrumentation-crewai==0.40.12
+  - opentelemetry-instrumentation-google-generativeai==0.40.12
+  - opentelemetry-instrumentation-groq==0.40.12
+  - opentelemetry-instrumentation-haystack==0.40.12
+  - opentelemetry-instrumentation-lancedb==0.40.12
+  - opentelemetry-instrumentation-langchain==0.40.12
+  - opentelemetry-instrumentation-llamaindex==0.40.12
+  - opentelemetry-instrumentation-logging>=0.50b0
+  - opentelemetry-instrumentation-marqo==0.40.12
+  - opentelemetry-instrumentation-mcp==0.40.12
+  - opentelemetry-instrumentation-milvus==0.40.12
+  - opentelemetry-instrumentation-mistralai==0.40.12
+  - opentelemetry-instrumentation-ollama==0.40.12
+  - opentelemetry-instrumentation-openai==0.40.12
+  - opentelemetry-instrumentation-pinecone==0.40.12
+  - opentelemetry-instrumentation-qdrant==0.40.12
+  - opentelemetry-instrumentation-replicate==0.40.12
+  - opentelemetry-instrumentation-requests>=0.50b0
+  - opentelemetry-instrumentation-sagemaker==0.40.12
+  - opentelemetry-instrumentation-sqlalchemy>=0.50b0
+  - opentelemetry-instrumentation-threading>=0.50b0
+  - opentelemetry-instrumentation-together==0.40.12
+  - opentelemetry-instrumentation-transformers==0.40.12
+  - opentelemetry-instrumentation-urllib3>=0.50b0
+  - opentelemetry-instrumentation-vertexai==0.40.12
+  - opentelemetry-instrumentation-watsonx==0.40.12
+  - opentelemetry-instrumentation-weaviate==0.40.12
+  - opentelemetry-sdk>=1.28.0,<2.0.0
+  - opentelemetry-semantic-conventions-ai==0.4.9
+  - posthog>3.0.2,<4
+  - pydantic>=1
+  - tenacity>=8.2.3,<10.0
+  requires_python: '>=3.10,<4'
 - pypi: https://files.pythonhosted.org/packages/00/c0/8f5d070730d7836adc9c9b6408dec68c6ced86b304a9b26a14df072a6e8c/traitlets-5.14.3-py3-none-any.whl
   name: traitlets
   version: 5.14.3
