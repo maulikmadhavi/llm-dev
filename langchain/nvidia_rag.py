@@ -4,7 +4,7 @@ from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from traceloop.sdk import Traceloop
 from traceloop.sdk.decorators import workflow
 import gradio as gr
-
+import torch
 # LangChain RAG dependencies
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import TokenTextSplitter
@@ -16,8 +16,8 @@ from sentence_transformers import CrossEncoder
 pdf_path = "/mnt/c/Users/mauli/Downloads/2503.19903v1.pdf"
 vector_root = "/mnt/d/llm-devs/langchain/vector_stores"
 nvidia_model = "nvidia/llama-3.3-nemotron-super-49b-v1"
-embedding_model_name = "BAAI/bge-large-en-v1.5"  # or 'large'
-reranker_model_name = "BAAI/bge-reranker-large"  # or 'large'
+embedding_model_name = "Qwen/Qwen3-Embedding-0.6B"  # or 'large' # This might fail for 1000 tokens, use 'BAAI/bge-reranker-large' for reranking
+reranker_model_name = "Qwen/Qwen3-Reranker-0.6B"  # or ""BAAI/bge-reranker-large"  # or 'large'
 chunk_size = 1000
 chunk_overlap = 200
 
@@ -71,24 +71,38 @@ llm = ChatNVIDIA(model=nvidia_model)
 # =============================================================================
 # RAG SYSTEM FUNCTIONS
 # =============================================================================
+SYSTEM_INSTRUCTION = "Answer concisely. If the question is unclear, say 'Question unclear.' Do not assume intent."
+
+
 def build_custom_prompt(context, question):
     """Create a prompt that instructs the LLM to use the provided context to answer the question."""
-    return f"""Use the following document context to answer the question:
+    prompt = f"""{SYSTEM_INSTRUCTION}
+
+Use the following document context to answer the question:
 
 {context}
 
 Question: {question}
 Answer:"""
+    return prompt
+
 
 
 # Load the reranker model
-reranker = CrossEncoder(reranker_model_name)  # or 'large'
+reranker = CrossEncoder(reranker_model_name, device='cuda' if torch.cuda.is_available() else 'cpu')
+
 
 @workflow(name="rerank_documents")
 def rerank(query, docs, top_k=5):    
     pairs = [[query, doc.page_content] for doc in docs]
+
+    scores = reranker.predict(pairs, batch_size=1, show_progress_bar=False)
     
-    scores = reranker.predict(pairs)
+    # put scores information with documents
+    for doc, score in zip(docs, scores):
+        print(f"score = {score} . type = {type(score)}")
+        doc.metadata['score'] = float(score)
+
     ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
     return [doc for doc, _ in ranked[:top_k]]
 
@@ -102,6 +116,9 @@ def ask_question(query, retriever, llm, top_k=5):
     4. Gets answer from LLM
     """
     docs = retriever.invoke(query)
+    docs = retriever.invoke(query)
+    if len(docs) < top_k:
+        top_k = len(docs)    
     print(f"🔍 Retrieved {len(docs)} chunks from retriever.")
     # Rerank the documents using the reranker model
     docs = rerank(query, docs, top_k=top_k)  # Adjust top_k as needed    
