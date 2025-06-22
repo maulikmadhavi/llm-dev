@@ -1,61 +1,164 @@
+# =============================================================================
+# IMPORTS
+# =============================================================================
+# Gradio for building the web interface
+import os
+import time
+from traceloop.sdk import Traceloop
+from traceloop.sdk.decorators import workflow
 import gradio as gr
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
+import torch
+# Document loading, processing, and vector storage components
 from langchain_ollama.llms import OllamaLLM
-from langchain_ollama.embeddings import OllamaEmbeddings
+from langchain_community.document_loaders import PyPDFLoader
+from langchain.text_splitter import TokenTextSplitter
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+from sentence_transformers import CrossEncoder
 
-# === your existing functions ===
-def load_pdf(file_path):
-    return PyPDFLoader(file_path).load()
 
-def split_documents(docs):
-    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    return splitter.split_documents(docs)
+# ------------------- Configuration ------------------- #
+pdf_path = "/mnt/c/Users/mauli/Downloads/1706.03762v7.pdf"
+vector_root = "/mnt/d/llm-devs/langchain/vector_stores"
+llm_model = "gemma3:4b"
+embedding_model_name = "Qwen/Qwen3-Embedding-0.6B"  # or 'large' # This might fail for 1000 tokens, use 'BAAI/bge-reranker-large' for reranking
+reranker_model_name = "Qwen/Qwen3-Reranker-0.6B"  # or ""BAAI/bge-reranker-large"  # or 'large'
+chunk_size = 1000
+chunk_overlap = 200
+
+# Extract base name for cache
+pdf_name = os.path.splitext(os.path.basename(pdf_path))[0]
+vector_store_path = os.path.join(vector_root, f"{pdf_name}_{embedding_model_name.replace('/', '_')}")
+
+
+# ------------------- Init Traceloop ------------------- #
+Traceloop.init(app_name="pdf_rag_chat", api_key=os.getenv("TRACELOOP_API_KEY"))
+
+# ------------------- Build or Load Vector DB ------------------- #
+def load_vector_db():
+    embedding = HuggingFaceEmbeddings(model_name=embedding_model_name)
+
+    if os.path.exists(vector_store_path):
+        print(f"✅ Loading cached vector store from {vector_store_path}")
+        try:
+            return FAISS.load_local(vector_store_path, embeddings=embedding, allow_dangerous_deserialization=True)
+        except Exception as e:
+            print(f"❌ Error loading cached vector store: {e}")
+            print("🔄 Rebuilding vector store with current embedding model...")
+            # If loading fails (usually due to dimension mismatch), continue to rebuild
+            
+    # Code to build new vector store
+    print("📄 Loading PDF...")
+    docs = PyPDFLoader(pdf_path).load()
+
+    print("✂️ Splitting into token chunks...")
+    splitter = TokenTextSplitter(
+        encoding_name="cl100k_base",
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        disallowed_special=()
+    )
+    chunks = splitter.split_documents(docs)
+
+    print("🔎 Embedding and indexing...")
+    vectordb = FAISS.from_documents(chunks, embedding)
+    os.makedirs(vector_root, exist_ok=True)
+    vectordb.save_local(vector_store_path)
+    print(f"💾 Vector store saved at {vector_store_path}")
+    return vectordb
+
+# Build everything once
+vectordb = load_vector_db()
+retriever = vectordb.as_retriever(
+    search_type="mmr",
+    search_kwargs={"k": 20, "verbose": True})
+llm = OllamaLLM(model=llm_model)
+
+# =============================================================================
+# RAG SYSTEM FUNCTIONS
+# =============================================================================
+SYSTEM_INSTRUCTION = "Answer concisely. If the question is unclear, say 'Question unclear.' Do not assume intent."
+
 
 def build_custom_prompt(context, question):
-    return f"""Use the following document context to answer the question:
+    """Create a prompt that instructs the LLM to use the provided context to answer the question."""
+    prompt = f"""{SYSTEM_INSTRUCTION}
+
+Use the following document context to answer the question:
 
 {context}
 
 Question: {question}
 Answer:"""
+    return prompt
 
-def ask_question(query, retriever, llm):
+
+
+# Load the reranker model
+reranker = CrossEncoder(reranker_model_name, device='cuda' if torch.cuda.is_available() else 'cpu')
+
+
+@workflow(name="rerank_documents")
+def rerank(query, docs, top_k=5):    
+    pairs = [[query, doc.page_content] for doc in docs]
+
+    scores = reranker.predict(pairs, batch_size=1, show_progress_bar=False)
+    
+    # put scores information with documents
+    for doc, score in zip(docs, scores):
+        print(f"score = {score} . type = {type(score)}")
+        doc.metadata['score'] = float(score)
+
+    ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
+    return [doc for doc, _ in ranked[:top_k]]
+
+@workflow(name="rag_ask_question")
+def ask_question(query, retriever, llm, top_k=5):
+    """
+    Core RAG function that:
+    1. Retrieves relevant document chunks
+    2. Builds context from top chunks
+    3. Creates a prompt with context and question
+    4. Gets answer from LLM
+    """
     docs = retriever.invoke(query)
-    context = "\n\n".join(d.page_content for d in docs[:3])
+    docs = retriever.invoke(query)
+    if len(docs) < top_k:
+        top_k = len(docs)    
+    print(f"🔍 Retrieved {len(docs)} chunks from retriever.")
+    # Rerank the documents using the reranker model
+    docs = rerank(query, docs, top_k=top_k)  # Adjust top_k as needed    
+    context = "\n\n".join(d.page_content for d in docs)
+    print(f"🔍 Found {len(docs)} relevant chunks, using top {top_k} for context.")
     prompt = build_custom_prompt(context, query)
     return llm.invoke(prompt), docs
 
-# === setup outside Gradio ===
-pdf_file = "/mnt/d/llm-devs/paper_qa/papers/9 Submission.pdf"
-docs = load_pdf(pdf_file)
-chunks = split_documents(docs)
-embeddings = OllamaEmbeddings(model="nomic-embed-text")
-vectorstore = FAISS.from_documents(chunks, embeddings)
-retriever = vectorstore.as_retriever()
-llm = OllamaLLM(model="gemma3:4b", temperature=0.1)
 
-# === Gradio UI ===
-with gr.Blocks() as demo:
-    mode = gr.Radio(["With History", "Single Turn"], value="With History",
-                    label="Chat Mode")
 
-    chatbot = gr.Chatbot(type="messages", show_label=False)
-    txt = gr.Textbox(placeholder="Ask a question...", label="")
+# ------------------- RAG Chat Workflow ------------------- #
+@workflow(name="chat_with_rag")
+def do_chat(in_message: str):
+    start_time = time.time()
+    answer, docs = ask_question(in_message, retriever, llm)
+    elapsed_time = time.time() - start_time
+    print(f"🕐 Took {elapsed_time:.2f}s")
+    return answer,  docs
 
-    def gr_chat(message, history, mode):
-        answer, docs = ask_question(message, retriever, llm)
-        if mode == "With History":
-            history = history + [
-                {"role": "user", "content": message},
-                {"role": "assistant", "content": answer}
-            ]
+# ------------------- Example Usage ------------------- #
+if __name__ == "__main__":
+    def chat_wrapper(question):
+        answer, docs = do_chat(question)
+        # answer is a LangChain LLMResult or string; ensure string
+        if hasattr(answer, "content"):
+            answer_text = answer.content
         else:
-            history = [{"role": "assistant", "content": answer}]
-        return history, history
+            answer_text = str(answer)
+        return answer_text
 
-    txt.submit(gr_chat, inputs=[txt, chatbot, mode], outputs=[chatbot, chatbot])
-    txt.submit(lambda: "", None, txt)  # clear input
-
-demo.launch()
+    gr.Interface(
+        fn=chat_wrapper,
+        inputs=gr.Textbox(label="Enter your question about the PDF"),
+        outputs=gr.Markdown(label="Answer"),
+        title="PDF RAG Chat",
+        description="Ask questions about the PDF document using RAG. (Markdown supported in answers.)",
+    ).launch()
