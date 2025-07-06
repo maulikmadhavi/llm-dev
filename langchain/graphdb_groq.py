@@ -1,3 +1,7 @@
+# Start the server
+# cd /mnt/d/libs/neo4j
+# docker compose up -d
+
 from langchain_community.graphs import Neo4jGraph
 from langchain_groq import ChatGroq
 import os

@@ -4,3 +4,4 @@ ASR/whisper-base-en/
 ASR/whisper-base-en-finetuned/
 paper_qa/db/
 langchain/vector_stores/
+langchain/research_agent/__pycache__/tools.cpython-312.pyc
