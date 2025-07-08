@@ -1,15 +1,16 @@
 name: Sourcery Review
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - main  # or use ['main', 'dev'] for multiple branches
 
 jobs:
   sourcery:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: sourcery-ai/action@v1
         with:
           sourcery_token: ${{ secrets.SOURCERY_TOKEN }}
