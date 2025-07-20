@@ -1,0 +1,75 @@
+{
+  "name": "script execution",
+  "nodes": [
+    {
+      "parameters": {
+        "command": "=D:/llm-devs/.pixi/envs/default/python D:/llm-devs/n8n/fake_data_gen.py --num-rows {{ $json.number }}"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "cbc55e32-0b78-4afe-8d79-f729939ffefe",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "formTitle": "Number",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "number",
+              "fieldType": "number",
+              "placeholder": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -192,
+        16
+      ],
+      "id": "5ffadfc8-e7e0-4686-9efe-955be4bff280",
+      "name": "On form submission",
+      "webhookId": "55c3b1c6-d9d7-4f97-baec-76a139d36e82"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1
+  },
+  "versionId": "1a5d81d9-7886-4c4c-957c-e4be3a1e69a3",
+  "meta": {
+    "instanceId": "0f50768f15d4383324a7e95543dea6129b6358a9400b9441bcd540e023a3fad4"
+  },
+  "id": "splVGcCoJP3tG7EC",
+  "tags": [
+    {
+      "name": "python",
+      "id": "kwo7MwlBlC2n8rCI",
+      "createdAt": "2025-07-20T18:06:24.629Z",
+      "updatedAt": "2025-07-20T18:06:24.629Z"
+    }
+  ]
+}
