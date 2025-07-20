@@ -1,0 +1,280 @@
+{
+  "name": "Search and describe the image",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1216,
+        -16
+      ],
+      "id": "310f0a78-993c-40f8-87da-075601a1efee",
+      "name": "When chat message received",
+      "webhookId": "82f1b48d-c1f9-4977-9db0-ad375f265fc6"
+    },
+    {
+      "parameters": {
+        "operation": "google_images",
+        "q": "=Image to search is: {{ $json.chatInput }}",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        -1008,
+        -16
+      ],
+      "id": "5abbe947-9ff7-457c-821c-f9ca3b9d09b9",
+      "name": "Google_images search",
+      "credentials": {
+        "serpApi": {
+          "id": "FbHOeJUHLAk8kQ7s",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "pixtral-large-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        240
+      ],
+      "id": "226bf6da-2492-4233-8278-6e2cb004fd08",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "JGxq70n2VhPxHuVl",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "suggested_searches",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "suggested_searches[0].thumbnail",
+        "options": {
+          "destinationFieldName": ""
+        }
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -16
+      ],
+      "id": "fd11e40f-f6df-4a24-8a9f-b1c12ea6e586",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "You are given an image. Describe the image in detail.",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "HumanMessagePromptTemplate",
+              "messageType": "imageUrl",
+              "imageUrl": "={{ $json['suggested_searches[0].thumbnail'] }}"
+            },
+            {
+              "type": "HumanMessagePromptTemplate",
+              "message": "Describe the image in detail."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -480,
+        -16
+      ],
+      "id": "a6054d95-79bf-4b2f-917b-37d6a18c4e8b",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aaf0e108-a7e3-4608-a20e-11bc2f0a90ee",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "cb7b3952-1144-4cb0-b09f-f6f90c975167",
+              "name": "image_url",
+              "value": "={{ $('Split Out').item.json['suggested_searches[0].thumbnail'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "selected",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -128,
+        -16
+      ],
+      "id": "82cf0536-e99e-4d93-930d-95e361177e31",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        -16
+      ],
+      "id": "33c6f96c-2c92-4852-8fd3-a15fa74ff42c",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5vl:3b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmOllama",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        224
+      ],
+      "id": "4e97d8a5-e186-4b91-a375-b22455d0f843",
+      "name": "Ollama Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "AYFFlpzdVNi4JWfO",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Google_images search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google_images search": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        []
+      ]
+    },
+    "Ollama Model": {
+      "ai_languageModel": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6d324d6f-df1b-4450-ad15-ae8aafa478ee",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0f50768f15d4383324a7e95543dea6129b6358a9400b9441bcd540e023a3fad4"
+  },
+  "id": "6I570TAXWNH79Xxv",
+  "tags": [
+    {
+      "name": "mistral",
+      "id": "AQNnh6qvW0KmlI53",
+      "createdAt": "2025-07-20T15:38:51.712Z",
+      "updatedAt": "2025-07-20T15:38:51.712Z"
+    },
+    {
+      "name": "llm",
+      "id": "fS3i5mZIe9iOmCB6",
+      "createdAt": "2025-07-20T15:38:59.294Z",
+      "updatedAt": "2025-07-20T15:38:59.294Z"
+    },
+    {
+      "name": "search",
+      "id": "iU5diwwrjz5FTy2Q",
+      "createdAt": "2025-07-20T17:35:39.021Z",
+      "updatedAt": "2025-07-20T17:35:39.021Z"
+    }
+  ]
+}

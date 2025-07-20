@@ -1,0 +1,201 @@
+{
+  "name": "LLM Form",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Topic Search",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "topic",
+              "placeholder": "$topic"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "de9c0717-831f-4990-b511-d8aadc2c4515",
+      "name": "On form submission",
+      "webhookId": "b1eb0b2f-8a25-48a8-bfe1-7b2adad8b01f"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Generate the description on this topic  in 200 words:  The topic is  {{ $json.topic }}",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        240,
+        32
+      ],
+      "id": "8e9355c0-3297-448c-b569-e816c4b311c8",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "mistral-small-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        112,
+        272
+      ],
+      "id": "0e1a6533-8eb7-4e1c-9479-f490245dd97e",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "JGxq70n2VhPxHuVl",
+          "name": "Mistral Cloud account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        320,
+        272
+      ],
+      "id": "44e36beb-91ff-47f5-9f7d-0ef4b65e8f2c",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "AYFFlpzdVNi4JWfO",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        704,
+        288
+      ],
+      "id": "a6968d48-5152-4d7d-b368-e3efb19f2898",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "D:/llm-devs/n8n/out.data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        912,
+        288
+      ],
+      "id": "26579015-eee9-4ab8-9162-02b658810cfb",
+      "name": "Read/Write Files from Disk"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "47e851de-e886-49db-ba69-c390671b2251",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0f50768f15d4383324a7e95543dea6129b6358a9400b9441bcd540e023a3fad4"
+  },
+  "id": "0X4TNMAJ94hMxlzq",
+  "tags": [
+    {
+      "name": "mistral",
+      "id": "AQNnh6qvW0KmlI53",
+      "createdAt": "2025-07-20T15:38:51.712Z",
+      "updatedAt": "2025-07-20T15:38:51.712Z"
+    },
+    {
+      "name": "form",
+      "id": "WgdxTAUkmQD4Tykl",
+      "createdAt": "2025-07-20T15:38:55.514Z",
+      "updatedAt": "2025-07-20T15:38:55.514Z"
+    },
+    {
+      "name": "llm",
+      "id": "fS3i5mZIe9iOmCB6",
+      "createdAt": "2025-07-20T15:38:59.294Z",
+      "updatedAt": "2025-07-20T15:38:59.294Z"
+    }
+  ]
+}
