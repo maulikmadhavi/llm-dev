@@ -5,3 +5,4 @@ ASR/whisper-base-en-finetuned/
 paper_qa/db/
 langchain/vector_stores/
 langchain/research_agent/__pycache__/tools.cpython-312.pyc
+Qwen2.5-0.5B-DPO/runs/Jul20_01-07-43_maulik-pc/events.out.tfevents.1752944865.maulik-pc.10936.0
