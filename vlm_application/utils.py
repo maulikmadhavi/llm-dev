@@ -11,6 +11,7 @@ from pathlib import Path
 import subprocess
 import math
 
+
 def send_prompt(vllm_api_endpoint, vllm_model, prompt, video_base64, system_prompt=None):
     headers = {
         "Content-Type": "application/json",
@@ -20,8 +21,8 @@ def send_prompt(vllm_api_endpoint, vllm_model, prompt, video_base64, system_prom
     payload = {
         "model": vllm_model,
         "temperature": 0,
-        "max_tokens": 4096,
-        "seed" : 42,        
+        "max_tokens": 1024,
+        "seed": 42,
         "messages": [
             {
                 "role": "system",
@@ -39,7 +40,46 @@ def send_prompt(vllm_api_endpoint, vllm_model, prompt, video_base64, system_prom
                         "text": prompt,
                     },
                 ],
-            }
+            },
+        ],
+    }
+
+    try:
+        response = requests.post(vllm_api_endpoint, headers=headers, json=payload)
+        result = response.json()
+
+        # tokens = result["usage"]["completion_tokens"]
+        result = str(result["choices"][0]["message"]["content"])
+        return result
+
+    except Exception as e:
+        print(f"vlm error: {e}")
+
+    return
+
+
+def send_prompt_for_image(vllm_api_endpoint, vllm_model, prompt, image_base64, system_prompt=None):
+    headers = {
+        "Content-Type": "application/json",
+    }
+    clean_b64 = image_base64.replace("\n", "").strip()
+    if len(clean_b64) % 4 != 0:
+        clean_b64 += "=" * (4 - (len(clean_b64) % 4))
+
+    payload = {
+        "model": vllm_model,
+        "temperature": 0,
+        "max_tokens": 1024,
+        "seed": 42,
+        "messages": [
+            {"role": "system", "content": system_prompt or "You are a helpful assistant."},
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt},
+                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{clean_b64}"}},
+                ],
+            },
         ],
     }
 
@@ -58,53 +98,7 @@ def send_prompt(vllm_api_endpoint, vllm_model, prompt, video_base64, system_prom
     return
 
 
-
-
-def send_prompt_for_image(vllm_api_endpoint, vllm_model, prompt, image_base64, system_prompt=None):
-    headers = {
-        "Content-Type": "application/json",
-    }
-    clean_b64 = image_base64.replace("\n", "").strip()
-    if len(clean_b64) % 4 != 0:
-        clean_b64 += "=" * (4 - (len(clean_b64) % 4))
-
-    payload = {
-        "model": vllm_model,
-        "temperature": 0,
-        "max_tokens": 4096,
-        "seed": 42,
-        "messages": [
-            {"role": "system", "content": system_prompt or "You are a helpful assistant."},
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": prompt},
-                    {
-                        "type": "image_url",
-                        "image_url": {"url": f"data:image/jpeg;base64,{clean_b64}"}
-                    }
-                ]
-            }
-        ]
-    }
-
-    try:
-        start_vlm_time = time.time()
-        response = requests.post(vllm_api_endpoint, headers=headers, json=payload)
-        result = response.json()
-
-        # tokens = result["usage"]["completion_tokens"]
-        result = str(result["choices"][0]["message"]["content"])
-        return result
-
-    except Exception as e:
-        print(f"vlm error: {e}")
-
-    return
-
-def send_text_query_prompt(
-    vllm_api_endpoint, vllm_model, prompt, summary_report, system_prompt=None
-):
+def send_text_query_prompt(vllm_api_endpoint, vllm_model, prompt, summary_report, system_prompt=None):
     """Send a text query prompt to the VLLM API."""
     headers = {
         "Content-Type": "application/json",
@@ -130,7 +124,7 @@ def send_text_query_prompt(
                 ],
             },
         ],
-        "seed":42,
+        "seed": 42,
     }
 
     try:
@@ -155,6 +149,7 @@ def encode_base64_content_for_imagefile(image_path):
     with open(image_path, "rb") as img:
         return base64.b64encode(img.read()).decode("utf-8")
 
+
 def process_video(
     input_video_file,
     output_video_file,
@@ -177,9 +172,7 @@ def process_video(
         if resize != None:
             out = cv2.VideoWriter(output_video_file, fourcc, fps, resize)
         else:
-            out = cv2.VideoWriter(
-                output_video_file, fourcc, fps, (frame_width, frame_height)
-            )
+            out = cv2.VideoWriter(output_video_file, fourcc, fps, (frame_width, frame_height))
 
         frame_count = 0
         for frame in frames:
@@ -203,6 +196,7 @@ def process_video(
 def extract_index(filename):
     match = re.search(r"_(\d+)\.mp4$", filename)
     return int(match.group(1)) if match else None
+
 
 def scan_video_files(video_dir):
     """
@@ -229,7 +223,7 @@ def do_chunking(input_video, out_dir, chunk_duration=10):
     tag = Path(input_video).stem
     output_dir = os.path.join(out_dir, tag)
     os.makedirs(output_dir, exist_ok=True)
-    
+
     # Get total duration of video (in seconds)
     cmd = [
         "ffprobe",
@@ -254,9 +248,7 @@ def do_chunking(input_video, out_dir, chunk_duration=10):
         if end_time > duration:
             end_time = duration
         actual_duration = min(chunk_duration, duration - start)
-        print(
-            f"chunk#{i}, {chunk_duration}, {start}, {actual_duration}, {end_time} == {start + actual_duration}"
-        )
+        print(f"chunk#{i}, {chunk_duration}, {start}, {actual_duration}, {end_time} == {start + actual_duration}")
         if actual_duration <= 0.0:
             break  # Nothing more to extract
         output_file = os.path.join(output_dir, f"{tag}_{i:03d}.mp4")
@@ -287,9 +279,7 @@ def do_chunking(input_video, out_dir, chunk_duration=10):
             if result.returncode == 0:
                 break  # Command succeeded, exit the loop
 
-            print(
-                f"Error in chunk {i} (attempt {attempts + 1}/{max_attempts}): {result.stderr.decode()}"
-            )
+            print(f"Error in chunk {i} (attempt {attempts + 1}/{max_attempts}): {result.stderr.decode()}")
             attempts += 1
             time.sleep(1)  # Wait before retrying
 
@@ -321,20 +311,38 @@ def do_chunking(input_video, out_dir, chunk_duration=10):
         # Break if the output file is empty or has no duration
         if output_duration <= 0:
             print(f"Output file {output_file} is empty or has no duration, stopping.")
-            break    
+            break
+
 
 if __name__ == "__main__":
     import yaml
+
     with open("config.yaml", "r") as f:
         data_config = yaml.safe_load(f)
-        
 
     base64_img = encode_base64_content_for_imagefile(data_config["SAMPLE_IMG"])
     vllm_api_endpoint = data_config["REMOTE_END"]
-    resize =  None # (640, 360)
+    resize = None  # (640, 360)
     vllm_model = data_config["MODEL_NAME"]
-    prompt="describe the image in detail"
-    output = send_prompt_for_image(
-        vllm_api_endpoint, vllm_model, prompt, base64_img
-    )
+    prompt = "describe the image in detail"
+    output = send_prompt_for_image(vllm_api_endpoint, vllm_model, prompt, base64_img)
     print(output)
+
+    # Sample test for video description
+    video_path = data_config["SAMPLE_VIDEO"]
+    base64_video = encode_base64_content_from_file(video_path)
+    prompt = "describe the video in detail"
+    output = send_prompt(vllm_api_endpoint, vllm_model, prompt, base64_video)
+    print(output)
+
+
+# if __name__ == "__main__":
+#     # Testinf the functions
+#     sample_image = "vlm_application/sample_image.jpg"
+#     base64_img = encode_base64_content_for_imagefile(sample_image)
+#     vllm_api_endpoint = "http://localhost:8000/v1/chat/completions"
+#     resize = (640, 360)
+#     vllm_model = "qwen2.5-vl-3b-instruct"
+#     prompt = "describe the image in detail"
+#     output = send_prompt_for_image(vllm_api_endpoint, vllm_model, prompt, base64_img)
+#     print(output)
