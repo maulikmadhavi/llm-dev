@@ -1,0 +1,8 @@
+REMOTE_END : "http://127.0.0.1:8000/v1/chat/completions"
+MODEL_NAME : "qwen/qwen2.5-vl-7b"
+SAMPLE_IMG : "D:/llm-devs/n8n/sample_images/8105973742_79b47b40c9_z.jpg"
+SAMPLE_VIDEO : "D:/llm-devs/vid_data/4_output.mp4"
+SUTD_DATA : 
+  path: "D:/research_data/SUTD_trafficQA/"
+  annotation: "D:/research_data/SUTD_trafficQA/annotations-20250811T023918Z-1-001/annotations"
+  videos: "D:/research_data/SUTD_trafficQA/raw_videos-001/compressed_videos"
