@@ -4,8 +4,11 @@ import json
 import base64
 import os
 import cv2
-import requests
 import re
+import logging
+from vlm_application.api_client import VLMAPIClient
+
+logger = logging.getLogger(__name__)
 from decord import VideoReader, cpu
 from pathlib import Path
 import subprocess
@@ -13,141 +16,69 @@ import math
 
 
 def send_prompt(vllm_api_endpoint, vllm_model, prompt, video_base64, system_prompt=None):
-    headers = {
-        "Content-Type": "application/json",
-    }
+    """Legacy wrapper for VLMAPIClient.send_prompt_with_video().
 
-    # Define the payload template
-    payload = {
-        "model": vllm_model,
-        "temperature": 0,
-        "max_tokens": 1024,
-        "seed": 42,
-        "messages": [
-            {
-                "role": "system",
-                "content": "You are a helpful assistant." if system_prompt is None else system_prompt,
-            },
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "video_url",
-                        "video_url": {"url": f"data:video/mp4;base64,{video_base64}"},
-                    },
-                    {
-                        "type": "text",
-                        "text": prompt,
-                    },
-                ],
-            },
-        ],
-    }
-
-    try:
-        response = requests.post(vllm_api_endpoint, headers=headers, json=payload)
-        result = response.json()
-
-        # tokens = result["usage"]["completion_tokens"]
-        result = str(result["choices"][0]["message"]["content"])
-        return result
-
-    except Exception as e:
-        print(f"vlm error: {e}")
-
-    return
+    Deprecated: Use VLMAPIClient directly for new code.
+    """
+    client = VLMAPIClient(vllm_api_endpoint, vllm_model)
+    return client.send_prompt_with_video(prompt, video_base64, system_prompt)
 
 
 def send_prompt_for_image(vllm_api_endpoint, vllm_model, prompt, image_base64, system_prompt=None):
-    headers = {
-        "Content-Type": "application/json",
-    }
-    clean_b64 = image_base64.replace("\n", "").strip()
-    if len(clean_b64) % 4 != 0:
-        clean_b64 += "=" * (4 - (len(clean_b64) % 4))
+    """Legacy wrapper for VLMAPIClient.send_prompt_with_image().
 
-    payload = {
-        "model": vllm_model,
-        "temperature": 0,
-        "max_tokens": 1024,
-        "seed": 42,
-        "messages": [
-            {"role": "system", "content": system_prompt or "You are a helpful assistant."},
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": prompt},
-                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{clean_b64}"}},
-                ],
-            },
-        ],
-    }
-
-    try:
-        start_vlm_time = time.time()
-        response = requests.post(vllm_api_endpoint, headers=headers, json=payload)
-        result = response.json()
-
-        # tokens = result["usage"]["completion_tokens"]
-        result = str(result["choices"][0]["message"]["content"])
-        return result
-
-    except Exception as e:
-        print(f"vlm error: {e}")
-
-    return
+    Deprecated: Use VLMAPIClient directly for new code.
+    """
+    client = VLMAPIClient(vllm_api_endpoint, vllm_model)
+    return client.send_prompt_with_image(prompt, image_base64, system_prompt)
 
 
 def send_text_query_prompt(vllm_api_endpoint, vllm_model, prompt, summary_report, system_prompt=None):
-    """Send a text query prompt to the VLLM API."""
-    headers = {
-        "Content-Type": "application/json",
-    }
+    """Legacy wrapper for VLMAPIClient.send_text_query().
 
-    # Define the payload template
-    payload = {
-        "model": vllm_model,
-        "temperature": 0,
-        "max_tokens": 1024,
-        "messages": [
-            {
-                "role": "system",
-                "content": "You are a helpful assistant." if system_prompt is None else system_prompt,
-            },
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": prompt + "\n\n" + summary_report,
-                    },
-                ],
-            },
-        ],
-        "seed": 42,
-    }
+    Deprecated: Use VLMAPIClient directly for new code.
+    """
+    client = VLMAPIClient(vllm_api_endpoint, vllm_model)
+    return client.send_text_query(prompt, summary_report, system_prompt)
 
+
+def encode_file_to_base64(file_path: str) -> str:
+    """Encode any file to base64 string.
+
+    Works with video files, images, documents, or any binary file.
+
+    Args:
+        file_path: Path to file
+
+    Returns:
+        Base64 encoded string
+
+    Raises:
+        FileNotFoundError: If file doesn't exist
+        IOError: If file cannot be read
+
+    Example:
+        >>> b64_video = encode_file_to_base64("video.mp4")
+        >>> b64_image = encode_file_to_base64("image.jpg")
+    """
     try:
-        response = requests.post(vllm_api_endpoint, headers=headers, json=payload)
-        result = response.json()
-        result = str(result["choices"][0]["message"]["content"])
-        return result
-    except Exception as e:
-        print(f"vlm error -- send_text_query_prompt: {e}")
-    return
+        with open(file_path, "rb") as f:
+            return base64.b64encode(f.read()).decode("utf-8")
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File not found: {file_path}")
+    except IOError as e:
+        raise IOError(f"Cannot read file {file_path}: {e}")
 
 
+# Legacy aliases for backward compatibility
 def encode_base64_content_from_file(file_path: str) -> str:
-    """Encode a local video file to base64 format."""
-    with open(file_path, "rb") as file:
-        file_content = file.read()
-        base64_encoded_content = base64.b64encode(file_content).decode("utf-8")
-    return base64_encoded_content
+    """Deprecated: Use encode_file_to_base64() instead."""
+    return encode_file_to_base64(file_path)
 
 
-def encode_base64_content_for_imagefile(image_path):
-    with open(image_path, "rb") as img:
-        return base64.b64encode(img.read()).decode("utf-8")
+def encode_base64_content_for_imagefile(image_path: str) -> str:
+    """Deprecated: Use encode_file_to_base64() instead."""
+    return encode_file_to_base64(image_path)
 
 
 def process_video(

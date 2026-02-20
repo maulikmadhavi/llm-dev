@@ -13,8 +13,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from sentence_transformers import CrossEncoder
 
 # ------------------- Configuration ------------------- #
-pdf_path = "/mnt/c/Users/mauli/Downloads/2503.19903v1.pdf"
-vector_root = "/mnt/d/llm-devs/langchain/vector_stores"
+pdf_path = os.getenv("RAG_PDF_PATH", "/mnt/c/Users/mauli/Downloads/2503.19903v1.pdf")
+vector_root = os.getenv("VECTOR_STORE_ROOT", "/mnt/d/llm-devs/langchain/vector_stores")
 nvidia_model = "nvidia/llama-3.3-nemotron-super-49b-v1"
 embedding_model_name = "Qwen/Qwen3-Embedding-0.6B"  # or 'large' # This might fail for 1000 tokens, use 'BAAI/bge-reranker-large' for reranking
 reranker_model_name = "Qwen/Qwen3-Reranker-0.6B"  # or ""BAAI/bge-reranker-large"  # or 'large'

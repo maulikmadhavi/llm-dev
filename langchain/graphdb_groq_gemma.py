@@ -5,17 +5,20 @@ from langchain_core.documents import Document
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain.chains import GraphCypherQAChain
 
-NEO4J_URI=os.getenv("NEO4J_URI", "neo4j://localhost:7687")
-NEO4J_URI = "neo4j://localhost:7687"  # Change this to your Neo4j instance URI
-NEO4J_USERNAME=os.getenv('NEO4J_USERNAME', 'neo4j')
-NEO4J_PASSWORD=os.getenv('NEO4J_PASSWORD', 'your_password')
-NEO4J_PASSWORD = "your_password"
-GROQ_API_KEY=os.getenv("GROQ_API_KEY")
+NEO4J_URI = os.getenv("NEO4J_URI", "neo4j://localhost:7687")
+NEO4J_USERNAME = os.getenv('NEO4J_USERNAME', 'neo4j')
+NEO4J_PASSWORD = os.getenv('NEO4J_PASSWORD')
+
+if not NEO4J_PASSWORD:
+    raise ValueError("NEO4J_PASSWORD environment variable must be set")
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY environment variable must be set")
 
 print(f"Using Neo4j URI: {NEO4J_URI}")
-print(f"Using Groq API Key: {GROQ_API_KEY}")
 print(f"Using Neo4j Username: {NEO4J_USERNAME}")
-print(f"Using Neo4j Password: {NEO4J_PASSWORD}")
+print(f"Groq API Key configured successfully")
 
 graph=Neo4jGraph(
     url=NEO4J_URI,

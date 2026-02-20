@@ -1,3 +1,7 @@
+# Environment variables
+.env
+.env.local
+
 nvidia_api.py
 ASR/data/
 ASR/whisper-base-en/
