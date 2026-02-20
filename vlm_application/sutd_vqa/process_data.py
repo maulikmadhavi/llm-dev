@@ -2,8 +2,10 @@ import json
 import yaml
 import os
 from tqdm import tqdm
-import decord 
-def get_vid_duration(video_path):
+import decord
+
+def get_vid_duration(video_path: str) -> float:
+    """Get video duration in seconds using ffprobe."""
     vr = decord.VideoReader(video_path)
     return len(vr) / vr.get_avg_fps()
 
@@ -48,12 +50,14 @@ def main():
             f"record_id: {record_id} | vid_id: {vid_id} | filename: {vid_filename}\nq_type: {q_type}\nQ: {q_body}\nA: {answer_str}\n"
         )
 
-def jsonl_writer(data: list, file_path: str):
+def jsonl_writer(data: list, file_path: str) -> None:
+    """Write list of dictionaries to JSONL file."""
     with open(file_path, 'w') as f:
         for item in data:
             f.write(json.dumps(item) + "\n")
 
-def prepare_filtered_data():
+def prepare_filtered_data() -> None:
+    """Filter and prepare SUTD VQA dataset for training."""
 
     with open("../config.yaml") as f:
         config = yaml.safe_load(f)

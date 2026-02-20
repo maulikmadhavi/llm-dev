@@ -7,6 +7,7 @@ import cv2
 import re
 import logging
 from vlm_application.api_client import VLMAPIClient
+from typing import Optional, Tuple, List
 
 logger = logging.getLogger(__name__)
 from decord import VideoReader, cpu
@@ -82,12 +83,13 @@ def encode_base64_content_for_imagefile(image_path: str) -> str:
 
 
 def process_video(
-    input_video_file,
-    output_video_file,
-    total_samples=10,
-    fps=1,
-    resize=None,
-):
+    input_video_file: str,
+    output_video_file: str,
+    total_samples: int = 10,
+    fps: int = 1,
+    resize: Optional[Tuple[int, int]] = None,
+) -> None:
+    """Extract evenly-spaced frames from video and write to output file."""
     try:
         vr = VideoReader(str(input_video_file), ctx=cpu(0))
         total_frame_num = len(vr)
@@ -124,17 +126,14 @@ def process_video(
     return
 
 
-def extract_index(filename):
+def extract_index(filename: str) -> Optional[int]:
+    """Extract numeric index from filename pattern like 'name_123.mp4'."""
     match = re.search(r"_(\d+)\.mp4$", filename)
     return int(match.group(1)) if match else None
 
 
-def scan_video_files(video_dir):
-    """
-    Scans a directory for all subfolders and finds .mp4 video files in each subfolder.
-    :param video_dir: The root directory containing subfolders with video files.
-    :return: List of tuples (folder, subfolder, video file name)
-    """
+def scan_video_files(video_dir: str) -> List[Tuple[str, str, Optional[int]]]:
+    """Scan directory for mp4 files and return list of (video_file, chunk_file, index) tuples."""
     video_list = []
 
     for folder in os.listdir(video_dir):
@@ -150,7 +149,8 @@ def scan_video_files(video_dir):
     return video_list
 
 
-def do_chunking(input_video, out_dir, chunk_duration=10):
+def do_chunking(input_video: str, out_dir: str, chunk_duration: int = 10) -> None:
+    """Split video into chunks of specified duration using ffmpeg."""
     tag = Path(input_video).stem
     output_dir = os.path.join(out_dir, tag)
     os.makedirs(output_dir, exist_ok=True)

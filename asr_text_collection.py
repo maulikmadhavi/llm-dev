@@ -2,6 +2,7 @@ import time
 import json
 import os
 import argparse
+from typing import List
 from huggingface_hub import InferenceClient
 from google.generativeai import configure, GenerativeModel
 
@@ -89,7 +90,8 @@ BATCH_SIZE = 60  # Adjust based on API rate limits
 RETRIES = 3
 DELAY = 5  # Seconds between requests
 
-def generate_batch(num_sentences):
+def generate_batch(num_sentences: int) -> List[str]:
+    """Generate batch of sentences using Gemini API with retry logic."""
     prompt = PROMPT_TEMPLATE.format(num_sentences=num_sentences)
     for attempt in range(RETRIES):
         try:
@@ -100,7 +102,8 @@ def generate_batch(num_sentences):
             time.sleep(DELAY)
     return []
 
-def main():
+def main() -> None:
+    """Generate sentences in batches and save to file."""
     all_sentences = []
     remaining = TOTAL_SENTENCES
 

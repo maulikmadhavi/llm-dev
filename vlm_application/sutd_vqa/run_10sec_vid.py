@@ -1,6 +1,7 @@
 import json
 import yaml
 import os
+from typing import Tuple
 from tqdm import tqdm
 import re
 import sys
@@ -41,9 +42,9 @@ output_content = []
 processed_videos = []
 
 content = content[:100]  # Limit to first 100 items for testing
-    
-def process_single_video(video_item):
-    """Process a single video with FFmpeg - run sequentially to avoid conflicts"""
+
+def process_single_video(video_item: Tuple[str, str, int]) -> Tuple[str, str, str]:
+    """Process single video chunk and return (video_file, chunk_file, result) tuple."""
     try:
         in_file = os.path.join(VIDEO_DATA, video_item['vid_filename'])
         out_file = os.path.join(processed_video_dir, video_item['vid_filename'])
@@ -80,7 +81,8 @@ for video_item in tqdm(content, desc="Processing videos with FFmpeg"):
 
 
 # for x in tqdm(content, desc="Processing videos", total=len(content)):
-def run_for_content(x):
+def run_for_content(x: Tuple[str, str, int]) -> str:
+    """Run VLM inference on video with question from dataset."""
     # in_file = os.path.join(VIDEO_DATA, x['vid_filename'])
     out_file = os.path.join(processed_video_dir,  x['vid_filename'])
 

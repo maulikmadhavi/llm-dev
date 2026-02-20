@@ -1,4 +1,5 @@
 import torch
+from typing import Dict, Any, List
 from datasets import load_dataset
 from trl import DPOConfig, DPOTrainer
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
@@ -13,7 +14,8 @@ print("Sample from train dataset:", dataset['train'][0])
 print("---")
 
 # Convert conversation format to string format to avoid chat template issues
-def convert_conversations_to_strings(examples):
+def convert_conversations_to_strings(examples: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Convert conversation examples to formatted prompt strings."""
     prompts = []
     chosen = []
     rejected = []
@@ -55,17 +57,8 @@ generator = pipeline(
     tokenizer=tokenizer,
     device_map="auto",)
 
-def format_chat_prompt(user_input, system_message="You are a helpful assistant."):
-    """
-    Formats user input into the chat template format with <|im_start|> and <|im_end|> tags.
-
-    Args:
-        user_input (str): The input text from the user.
-
-    Returns:
-        str: Formatted prompt for the model.
-    """
-    
+def format_chat_prompt(user_input: str, system_message: str = "You are a helpful assistant.") -> str:
+    """Format user input into the chat template format with <|im_start|> and <|im_end|> tags."""
     # Format user message
     user_prompt = f"<|im_start|>user\n{user_input}<|im_end|>\n"
     

@@ -1,5 +1,6 @@
 import os
 import time
+from typing import List, Any, Tuple
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from traceloop.sdk import Traceloop
 from traceloop.sdk.decorators import workflow
@@ -29,7 +30,8 @@ vector_store_path = os.path.join(vector_root, f"{pdf_name}_{embedding_model_name
 Traceloop.init(app_name="pdf_rag_chat", api_key=os.getenv("TRACELOOP_API_KEY"))
 
 # ------------------- Build or Load Vector DB ------------------- #
-def load_vector_db():
+def load_vector_db() -> FAISS:
+    """Load or create FAISS vector store for PDF embeddings."""
     embedding = HuggingFaceEmbeddings(model_name=embedding_model_name)
 
     if os.path.exists(vector_store_path):
@@ -74,7 +76,7 @@ llm = ChatNVIDIA(model=nvidia_model)
 SYSTEM_INSTRUCTION = "Answer concisely. If the question is unclear, say 'Question unclear.' Do not assume intent."
 
 
-def build_custom_prompt(context, question):
+def build_custom_prompt(context: str, question: str) -> str:
     """Create a prompt that instructs the LLM to use the provided context to answer the question."""
     prompt = f"""{SYSTEM_INSTRUCTION}
 
@@ -93,7 +95,8 @@ reranker = CrossEncoder(reranker_model_name, device='cuda' if torch.cuda.is_avai
 
 
 @workflow(name="rerank_documents")
-def rerank(query, docs, top_k=5):    
+def rerank(query: str, docs: List[Any], top_k: int = 5) -> List[Any]:
+    """Rerank documents using cross-encoder model."""
     pairs = [[query, doc.page_content] for doc in docs]
 
     scores = reranker.predict(pairs, batch_size=1, show_progress_bar=False)
@@ -107,14 +110,8 @@ def rerank(query, docs, top_k=5):
     return [doc for doc, _ in ranked[:top_k]]
 
 @workflow(name="rag_ask_question")
-def ask_question(query, retriever, llm, top_k=5):
-    """
-    Core RAG function that:
-    1. Retrieves relevant document chunks
-    2. Builds context from top chunks
-    3. Creates a prompt with context and question
-    4. Gets answer from LLM
-    """
+def ask_question(query: str, retriever: Any, llm: Any, top_k: int = 5) -> Tuple[Any, List[Any]]:
+    """Core RAG function that retrieves documents and generates answer."""
     docs = retriever.invoke(query)
     docs = retriever.invoke(query)
     if len(docs) < top_k:
@@ -131,7 +128,8 @@ def ask_question(query, retriever, llm, top_k=5):
 
 # ------------------- RAG Chat Workflow ------------------- #
 @workflow(name="chat_with_rag")
-def do_chat(in_message: str):
+def do_chat(in_message: str) -> Tuple[Any, List[Any]]:
+    """Execute RAG chat workflow and return answer with source documents."""
     start_time = time.time()
     answer, docs = ask_question(in_message, retriever, llm)
     elapsed_time = time.time() - start_time
@@ -140,7 +138,8 @@ def do_chat(in_message: str):
 
 # ------------------- Example Usage ------------------- #
 if __name__ == "__main__":
-    def chat_wrapper(question):
+    def chat_wrapper(question: str) -> str:
+        """Gradio wrapper that extracts text from chat response."""
         answer, docs = do_chat(question)
         # answer is a LangChain LLMResult or string; ensure string
         if hasattr(answer, "content"):

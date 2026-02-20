@@ -1,6 +1,6 @@
 import contextlib
 import os
-
+from typing import Any
 import base64
 from PIL import Image
 import requests
@@ -22,7 +22,8 @@ Traceloop.init(app_name="image_caption", api_key=os.getenv("TRACELOOP_API_KEY"))
 
 
 # ---------- Utility Functions ----------
-def fetch_outputs(output):
+def fetch_outputs(output: Any) -> str:
+    """Extract and format model outputs from LangChain response."""
     collect_streaming_outputs=[]
     for o in output:
         with contextlib.suppress(Exception):
@@ -34,8 +35,9 @@ def fetch_outputs(output):
     outputs=''.join(collect_streaming_outputs)
     return outputs.replace('\\','').replace('\'','')
 
-def img2base64_string(img_path):
-    print(f"[DEBUG ] Converting image at {img_path} to base64.") 
+def img2base64_string(img_path: str) -> str:
+    """Resize image if needed and encode to base64 string."""
+    print(f"[DEBUG ] Converting image at {img_path} to base64.")
     image = Image.open(img_path)
     if image.width > 800 or image.height > 800:
         image.thumbnail((800, 800))
@@ -45,7 +47,8 @@ def img2base64_string(img_path):
 
 
 @workflow(name="Fuyu VLM Image Caption")
-def fuyu(prompt,img_path):
+def fuyu(prompt: str, img_path: str) -> str:
+    """Send image and prompt to VLM API and return response."""
     invoke_url = "https://ai.api.nvidia.com/v1/vlm/adept/fuyu-8b"
     stream = True
   
@@ -94,7 +97,8 @@ class ImageCaptionTool(BaseTool):
     description: str = "Use this tool when given the path to an image that you would like to be described. " \
                   "It will return a simple caption describing the image."
 
-    def _run(self, img_path):
+    def _run(self, img_path: str) -> str:
+        """Generate image caption using VLM API."""
         invoke_url = "https://ai.api.nvidia.com/v1/vlm/adept/fuyu-8b"
         stream = True
 
@@ -132,8 +136,9 @@ class ImageCaptionTool(BaseTool):
             output=response.json()
         return fetch_outputs(output)
 
-    def _arun(self, query: str):
-        raise NotImplementedError("This tool does not support async")
+    async def _arun(self, query: str) -> str:
+        """Async version not implemented."""
+        raise NotImplementedError("Async not supported")
 
 
 @workflow(name="Tabular Plot Tool")
@@ -143,7 +148,8 @@ class TabularPlotTool(BaseTool):
                   "It will extract and return the tabular data "
 
 
-    def _run(self, img_path):
+    def _run(self, img_path: str) -> str:
+        """Extract tabular data from image using VLM API."""
         invoke_url = "https://ai.api.nvidia.com/v1/vlm/google/deplot"
         stream = True
 
@@ -182,12 +188,13 @@ class TabularPlotTool(BaseTool):
         else:
             output=response.json()
         return fetch_outputs(output)
-    def _arun(self, query: str):
-        raise NotImplementedError("This tool does not support async")
-      
+
+    async def _arun(self, query: str) -> str:
+        """Async version not implemented."""
+        raise NotImplementedError("Async not supported")
 
 
-# ----- 
+# -----
 #initialize the gent
 tools = [ImageCaptionTool(),TabularPlotTool()]
 
@@ -212,7 +219,8 @@ agent = initialize_agent(
 
 
 @workflow(name="ImageAgentWorkflow")
-def my_agent(img_path):
+def my_agent(img_path: str) -> str:
+    """Run agent workflow with image caption and tabular plot tools."""
     # Optionally use fuyu first to guide the agent
     caption = fuyu("Describe the image", img_path)
     print("[DEBUG] Caption from Fuyu:", caption)

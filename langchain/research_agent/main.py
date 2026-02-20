@@ -41,7 +41,8 @@ agent = create_tool_calling_agent(llm=llm, tools=tools, prompt=prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
 # Run with proper input handling and chat history
-def run_research(query: str):
+def run_research(query: str) -> None:
+    """Run interactive research agent with given query."""
     try:
         response = agent_executor.invoke({
             "in": query,

@@ -1,11 +1,13 @@
 import uuid
 import random
+from typing import Dict, Any, List
 from faker import Faker
 import argparse
 
 fake = Faker()
 
-def generate_fake_data(num_rows):
+def generate_fake_data(num_rows: int) -> List[Dict[str, Any]]:
+    """Generate fake user data using Faker library."""
     data = []
     for _ in range(num_rows):
         row = {

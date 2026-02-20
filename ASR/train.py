@@ -22,8 +22,9 @@ tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-base", language="En
 model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-base")
 
 
-def prepare_dataset(examples):
-    # compute log-Mel input features from input audio array 
+def prepare_dataset(examples: Dict[str, Any]) -> Dict[str, Any]:
+    """Preprocess audio data for Whisper model training."""
+    # compute log-Mel input features from input audio array
     audio = examples["audio"]
     examples["input_features"] = feature_extractor(
         audio["array"], sampling_rate=16000).input_features[0]
@@ -35,7 +36,8 @@ def prepare_dataset(examples):
     del examples["sentence"]
     return examples
 
-def compute_metrics(pred):
+def compute_metrics(pred: Any) -> Dict[str, float]:
+    """Calculate Word Error Rate (WER) from model predictions."""
     pred_ids = pred.predictions
     label_ids = pred.label_ids
 
@@ -67,7 +69,10 @@ train_dataset = train_dataset.map(prepare_dataset, num_proc=1)
 
 @dataclass
 class DataCollatorSpeechSeq2SeqWithPadding:
+    """Data collator for speech-to-text with dynamic padding."""
+
     processor: Any
+
     def __call__(self, features: List[Dict[str, Union[List[int], torch.Tensor]]]) -> Dict[str, torch.Tensor]:
         # split inputs and labels since they have to be of different lengths and need different padding methods
         # first treat the audio inputs by simply returning torch tensors
