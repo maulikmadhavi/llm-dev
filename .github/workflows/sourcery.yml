@@ -13,4 +13,4 @@ jobs:
 
       - uses: sourcery-ai/action@v1
         with:
-          sourcery_token: ${{ secrets.SOURCERY_TOKEN }}
+          token: ${{ secrets.SOURCERY_TOKEN }}
